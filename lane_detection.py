@@ -1,14 +1,19 @@
 import cv2
+import numpy as np
 
-# Load an image
-image = cv2.imread("images/road.jpg")  # Make sure you have a sample image named road.jpg
+# Load the image
+image = cv2.imread("images/road.jpg")
 
-# Convert the image to grayscale
+# Convert to grayscale
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-# Show both original and grayscale images
-cv2.imshow("Original Image", image)
-cv2.imshow("Grayscale Image", gray)
+# Apply Gaussian blur to reduce noise
+blurred = cv2.GaussianBlur(gray, (5, 5), 0)
 
-cv2.waitKey(0)  # Wait for a key press
-cv2.destroyAllWindows()  # Close all image windows.
+# Use Canny Edge Detection to find lane edges
+edges = cv2.Canny(blurred, 50, 150)
+
+# Show the result
+cv2.imshow("Lane Edges", edges)
+cv2.waitKey(0)
+cv2.destroyAllWindows()

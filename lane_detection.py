@@ -11,4 +11,4 @@ cv2.imshow("Original Image", image)
 cv2.imshow("Grayscale Image", gray)
 
 cv2.waitKey(0)  # Wait for a key press
-cv2.destroyAllWindows()  # Close all image windows
+cv2.destroyAllWindows()  # Close all image windows.
